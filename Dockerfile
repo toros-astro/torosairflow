@@ -14,12 +14,8 @@ RUN mkdir -p /toros; \
     chown -R airflow:root /toros;
 
 USER airflow
-
 RUN airflow initdb
-
 EXPOSE 8080:5000
 
-
-# RUN airflow webserver -p 5000 &
-# CMD ["airflow", "webserver", "-p", "5000"]
-# CMD ["airflow", "scheduler"]
+ENTRYPOINT ["airflow"]
+CMD ["webserver", "-p", "5000"]
